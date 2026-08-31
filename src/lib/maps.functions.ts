@@ -8,10 +8,10 @@ export type PlaceResult = {
   address: string;
   lat: number;
   lng: number;
-  rating?: number;
-  userRatingCount?: number;
-  openNow?: boolean;
-  priceLevel?: string;
+  rating?: number | undefined;
+  userRatingCount?: number | undefined;
+  openNow?: boolean | undefined;
+  priceLevel?: string | undefined;
 };
 
 export type RouteResult = {
