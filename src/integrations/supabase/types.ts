@@ -14,7 +14,192 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      pico_y_placa: {
+        Row: {
+          city: string
+          digits: string
+          id: string
+          notes: string | null
+          schedule: string
+          updated_at: string
+          vehicle_type: string
+          weekday: number
+        }
+        Insert: {
+          city: string
+          digits: string
+          id?: string
+          notes?: string | null
+          schedule: string
+          updated_at?: string
+          vehicle_type?: string
+          weekday: number
+        }
+        Update: {
+          city?: string
+          digits?: string
+          id?: string
+          notes?: string | null
+          schedule?: string
+          updated_at?: string
+          vehicle_type?: string
+          weekday?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          city: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          plan: Database["public"]["Enums"]["plan_tier"]
+          plate: string | null
+          updated_at: string
+          user_id: string
+          vehicle_type: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          plan?: Database["public"]["Enums"]["plan_tier"]
+          plate?: string | null
+          updated_at?: string
+          user_id: string
+          vehicle_type?: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          plan?: Database["public"]["Enums"]["plan_tier"]
+          plate?: string | null
+          updated_at?: string
+          user_id?: string
+          vehicle_type?: string
+        }
+        Relationships: []
+      }
+      route_history: {
+        Row: {
+          created_at: string
+          destination_label: string
+          destination_lat: number | null
+          destination_lng: number | null
+          distance_meters: number | null
+          duration_seconds: number | null
+          id: string
+          origin_label: string
+          origin_lat: number | null
+          origin_lng: number | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          destination_label: string
+          destination_lat?: number | null
+          destination_lng?: number | null
+          distance_meters?: number | null
+          duration_seconds?: number | null
+          id?: string
+          origin_label: string
+          origin_lat?: number | null
+          origin_lng?: number | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          destination_label?: string
+          destination_lat?: number | null
+          destination_lng?: number | null
+          distance_meters?: number | null
+          duration_seconds?: number | null
+          id?: string
+          origin_label?: string
+          origin_lat?: number | null
+          origin_lng?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      saved_places: {
+        Row: {
+          address: string | null
+          category: string
+          created_at: string
+          id: string
+          lat: number
+          lng: number
+          name: string
+          user_id: string
+        }
+        Insert: {
+          address?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          lat: number
+          lng: number
+          name: string
+          user_id: string
+        }
+        Update: {
+          address?: string | null
+          category?: string
+          created_at?: string
+          id?: string
+          lat?: number
+          lng?: number
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          currency: string
+          current_period_end: string | null
+          id: string
+          plan: Database["public"]["Enums"]["plan_tier"]
+          provider: string | null
+          provider_reference: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_cents?: number
+          created_at?: string
+          currency?: string
+          current_period_end?: string | null
+          id?: string
+          plan?: Database["public"]["Enums"]["plan_tier"]
+          provider?: string | null
+          provider_reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          currency?: string
+          current_period_end?: string | null
+          id?: string
+          plan?: Database["public"]["Enums"]["plan_tier"]
+          provider?: string | null
+          provider_reference?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +208,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      plan_tier: "free" | "pro"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +335,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      plan_tier: ["free", "pro"],
+    },
   },
 } as const
