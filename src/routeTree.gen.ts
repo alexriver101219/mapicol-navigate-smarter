@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedAsistenteRouteImport } from './routes/_authenticated/asistente'
+import { Route as AuthenticatedHistorialRouteImport } from './routes/_authenticated/historial'
 import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
 
 const IndexRoute = IndexRouteImport.update({
@@ -34,6 +35,11 @@ const AuthenticatedAsistenteRoute = AuthenticatedAsistenteRouteImport.update({
   path: '/asistente',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedHistorialRoute = AuthenticatedHistorialRouteImport.update({
+  id: '/historial',
+  path: '/historial',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedMapaRoute = AuthenticatedMapaRouteImport.update({
   id: '/mapa',
   path: '/mapa',
@@ -44,12 +50,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/asistente': typeof AuthenticatedAsistenteRoute
+  '/historial': typeof AuthenticatedHistorialRoute
   '/mapa': typeof AuthenticatedMapaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/asistente': typeof AuthenticatedAsistenteRoute
+  '/historial': typeof AuthenticatedHistorialRoute
   '/mapa': typeof AuthenticatedMapaRoute
 }
 export interface FileRoutesById {
@@ -58,19 +66,21 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/asistente': typeof AuthenticatedAsistenteRoute
+  '/_authenticated/historial': typeof AuthenticatedHistorialRoute
   '/_authenticated/mapa': typeof AuthenticatedMapaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/asistente' | '/mapa'
+  fullPaths: '/' | '/auth' | '/asistente' | '/historial' | '/mapa'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/asistente' | '/mapa'
+  to: '/' | '/auth' | '/asistente' | '/historial' | '/mapa'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/asistente'
+    | '/_authenticated/historial'
     | '/_authenticated/mapa'
   fileRoutesById: FileRoutesById
 }
@@ -110,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAsistenteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/historial': {
+      id: '/_authenticated/historial'
+      path: '/historial'
+      fullPath: '/historial'
+      preLoaderRoute: typeof AuthenticatedHistorialRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/mapa': {
       id: '/_authenticated/mapa'
       path: '/mapa'
@@ -122,11 +139,13 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAsistenteRoute: typeof AuthenticatedAsistenteRoute
+  AuthenticatedHistorialRoute: typeof AuthenticatedHistorialRoute
   AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAsistenteRoute: AuthenticatedAsistenteRoute,
+  AuthenticatedHistorialRoute: AuthenticatedHistorialRoute,
   AuthenticatedMapaRoute: AuthenticatedMapaRoute,
 }
 
