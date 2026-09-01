@@ -1,0 +1,16 @@
+{
+  "name": "MapiCol — Navega por Colombia",
+  "short_name": "MapiCol",
+  "description": "Navegación con tráfico en vivo, comandos por voz, pico y placa y asistente de IA.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "lang": "es-CO",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
