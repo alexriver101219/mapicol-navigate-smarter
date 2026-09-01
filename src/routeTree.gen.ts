@@ -16,6 +16,7 @@ import { Route as AuthenticatedAsistenteRouteImport } from './routes/_authentica
 import { Route as AuthenticatedHistorialRouteImport } from './routes/_authenticated/historial'
 import { Route as AuthenticatedMapaRouteImport } from './routes/_authenticated/mapa'
 import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedPicoYPlacaRouteImport } from './routes/_authenticated/pico-y-placa'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -51,6 +52,11 @@ const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPicoYPlacaRoute = AuthenticatedPicoYPlacaRouteImport.update({
+  id: '/pico-y-placa',
+  path: '/pico-y-placa',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/historial': typeof AuthenticatedHistorialRoute
   '/mapa': typeof AuthenticatedMapaRoute
   '/perfil': typeof AuthenticatedPerfilRoute
+  '/pico-y-placa': typeof AuthenticatedPicoYPlacaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/historial': typeof AuthenticatedHistorialRoute
   '/mapa': typeof AuthenticatedMapaRoute
   '/perfil': typeof AuthenticatedPerfilRoute
+  '/pico-y-placa': typeof AuthenticatedPicoYPlacaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,12 +85,27 @@ export interface FileRoutesById {
   '/_authenticated/historial': typeof AuthenticatedHistorialRoute
   '/_authenticated/mapa': typeof AuthenticatedMapaRoute
   '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/pico-y-placa': typeof AuthenticatedPicoYPlacaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/asistente' | '/historial' | '/mapa' | '/perfil'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/asistente'
+    | '/historial'
+    | '/mapa'
+    | '/perfil'
+    | '/pico-y-placa'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/asistente' | '/historial' | '/mapa' | '/perfil'
+  to:
+    | '/'
+    | '/auth'
+    | '/asistente'
+    | '/historial'
+    | '/mapa'
+    | '/perfil'
+    | '/pico-y-placa'
   id:
     | '__root__'
     | '/'
@@ -92,6 +115,7 @@ export interface FileRouteTypes {
     | '/_authenticated/historial'
     | '/_authenticated/mapa'
     | '/_authenticated/perfil'
+    | '/_authenticated/pico-y-placa'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -151,6 +175,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPerfilRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/pico-y-placa': {
+      id: '/_authenticated/pico-y-placa'
+      path: '/pico-y-placa'
+      fullPath: '/pico-y-placa'
+      preLoaderRoute: typeof AuthenticatedPicoYPlacaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -159,6 +190,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHistorialRoute: typeof AuthenticatedHistorialRoute
   AuthenticatedMapaRoute: typeof AuthenticatedMapaRoute
   AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedPicoYPlacaRoute: typeof AuthenticatedPicoYPlacaRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -166,6 +198,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHistorialRoute: AuthenticatedHistorialRoute,
   AuthenticatedMapaRoute: AuthenticatedMapaRoute,
   AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedPicoYPlacaRoute: AuthenticatedPicoYPlacaRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
