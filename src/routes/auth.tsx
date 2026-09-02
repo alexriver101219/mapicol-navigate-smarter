@@ -89,13 +89,17 @@ function AuthPage() {
     });
     setLoading(false);
     if (error) {
+      const msg = error.message.toLowerCase();
       toast.error(
-        error.message.includes("already")
+        msg.includes("already")
           ? "Ese correo ya está registrado. Inicia sesión."
-          : "No pudimos crear la cuenta.",
+          : msg.includes("weak") || msg.includes("pwned")
+            ? "Esa contraseña es insegura o fue filtrada en internet. Usa una más fuerte."
+            : `No pudimos crear la cuenta: ${error.message}`,
       );
       return;
     }
+
     if (!data.session) {
       toast.success("Revisa tu correo para confirmar la cuenta.");
       return;

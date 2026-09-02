@@ -101,7 +101,7 @@ function Landing() {
                 <Button asChild size="lg">
                   <Link to="/auth">Crear cuenta gratis</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
+                <Button asChild size="lg" variant="hero">
                   <Link to="/precios">Ver plan Pro</Link>
                 </Button>
               </div>
