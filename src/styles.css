@@ -181,7 +181,20 @@
     oklch(0.32 0.12 264) 55%,
     oklch(0.42 0.14 264) 100%
   );
+  color: oklch(0.98 0.01 250);
+
+  & h1,
+  & h2,
+  & p,
+  & span {
+    color: inherit;
+  }
+
+  & .text-muted-foreground {
+    color: oklch(0.88 0.03 250);
+  }
 }
+
 
 @utility flag-bar {
   background-image: linear-gradient(
