@@ -16,6 +16,13 @@ import {
 import { Loader2, ShieldAlert } from "lucide-react";
 
 const DAYS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const VEHICLE_LABELS: Record<string, string> = {
+  car: "Carro particular",
+  motorcycle: "Moto",
+  taxi: "Taxi",
+  truck: "Camión",
+};
+
 
 export const Route = createFileRoute("/_authenticated/pico-y-placa")({
   head: () => ({
