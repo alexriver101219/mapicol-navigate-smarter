@@ -16,6 +16,13 @@ import {
 import { Loader2, ShieldAlert } from "lucide-react";
 
 const DAYS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+const VEHICLE_LABELS: Record<string, string> = {
+  car: "Carro particular",
+  motorcycle: "Moto",
+  taxi: "Taxi",
+  truck: "Camión",
+};
+
 
 export const Route = createFileRoute("/_authenticated/pico-y-placa")({
   head: () => ({
@@ -115,8 +122,11 @@ function PicoPage() {
                 Dígitos: <span className="font-medium text-foreground">{rule.digits}</span>
               </p>
               <p>Horario: {rule.schedule}</p>
-              <p>Vehículo: {rule.vehicle_type}</p>
-              {rule.notes && <p className="text-xs">{rule.notes}</p>}
+              <p>Vehículo: {VEHICLE_LABELS[rule.vehicle_type] ?? rule.vehicle_type}</p>
+              {rule.notes && rule.notes !== DAYS[rule.weekday] && (
+                <p className="text-xs">{rule.notes}</p>
+              )}
+
             </CardContent>
           </Card>
         );
